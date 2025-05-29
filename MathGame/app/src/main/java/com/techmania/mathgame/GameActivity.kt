@@ -67,7 +67,14 @@ class GameActivity : AppCompatActivity() {
                     userScore = userScore + 10
                     textQuestion.text = "Congratulations, your answer is correct"
                     textScore.text = userScore.toString()
-                }
+                }else  if (userLife == 0)
+            {
+                Toast.makeText(applicationContext,"Game Over",Toast.LENGTH_LONG).show()
+                val intent = Intent(this@GameActivity,ResultActivity::class.java)
+                intent.putExtra("score",userScore)
+                startActivity(intent)
+                finish()
+            }
                 else
                 {
                     userLife--
